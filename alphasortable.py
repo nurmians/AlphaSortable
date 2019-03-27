@@ -13,17 +13,17 @@
 # 0-9 => a-j
 # k==10, l==100, m==1000, ...
 #
-# Ecoding/Dncoding in pairs, expect for last char: 
+# Encoding/Decoding in pairs, except for last char: 
 # lckbb <=> 211
 # [lc]->100*2,[kb]->10*1,[b]->1 ==> 211
 #
 
 import sys
 
-
 def FromAlphaSortable( aStr):	
 
 	retval=0
+	# Read in pairs of chars
 	for i in range( 0, len( aStr)-1, 2):
 		base = 10**(ord( aStr[ i])-(ord('k')-1))		
 		mult = ord( aStr[ i+1]) - 97
@@ -31,7 +31,6 @@ def FromAlphaSortable( aStr):
 
 	retval += ord( aStr[ -1]) - 97
 	return retval
-
 
 def ToAlphaSortable( aInt):	
 
@@ -101,7 +100,7 @@ if __name__ == '__main__':
 			break
 	print "Sort test [%s]" % ("OK" if sort_ok else "FAIL")
 
-	#print "Big:", FromAlphaSortable( "zka")
+	#print "Max:", FromAlphaSortable( "zka")
 	#TestAlphaSortable( 10000000000000000)
 	#TestAlphaSortable( 99999999999999999)
 	TestAlphaSortable( 100000000000000000)
